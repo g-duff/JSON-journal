@@ -1,1 +1,1 @@
-# JSON-journal
+# JSON journal

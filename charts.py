@@ -8,13 +8,13 @@ def load_balance(json_file):
     return balances
 
 
-def create_pie_chart(balances):
+def create_pie_chart(balances, axes):
     account_list = []
     amount_list = []
     for account, amount in balances.items():
         account_list.append(account)
         amount_list.append(abs(amount))
-    plt.pie(amount_list, labels = account_list)
+    axes.pie(amount_list, labels = account_list)
 
 
 if __name__ == '__main__':
@@ -24,6 +24,7 @@ if __name__ == '__main__':
 
     expenses_json = 'expenses.json'
     expenses_data = load_balance(expenses_json)
-    create_pie_chart(expenses_data)
+    fig, axes = plt.subplots()
+    create_pie_chart(expenses_data, axes)
     plt.show()
 

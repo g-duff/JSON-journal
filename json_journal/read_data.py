@@ -1,12 +1,6 @@
 from tabulate import tabulate
 import json
-
-
-def load_ledger(json_file):
-    with open(json_file, 'r') as file:
-        ledger = json.load(file)
-    return ledger
-
+from json_journal import file_io
 
 def separate_out_entities(ledger, all_entries):
     for transaction in range(len(ledger)):
@@ -80,7 +74,7 @@ if __name__ == '__main__':
 
     json_file = 'finances.json'
     entries = {}
-    ledger = load_ledger(json_file)
+    ledger = file_io.load_json_file(json_file)
 
     separate_out_entities(ledger, entries)
     expenses = separate_expenses(entries)

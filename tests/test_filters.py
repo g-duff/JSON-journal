@@ -5,15 +5,14 @@ class TestBalanceToExpenses(unittest.TestCase):
 
     def test_simplecase(self):
         # Given
-        journal = [
-            {
-                'expenses:eatingout': 100, 'assets:current' : -100, 
-                'expenses:groceries' : 50, 'assets:current' : -50
-            },
-        ]
+        journal = {
+            'expense:eatingout' : 100, 'assets:current' : -100, 
+            'expense:groceries' : 50, 'assets:current' : -50
+            }
+        
         expected_expenses = {
-            'expenses:eatingout': 100,
-            'expenses:groceries': 50,
+            'expense:eatingout' : 100,
+            'expense:groceries': 50,
         }
 
         # When

@@ -1,4 +1,5 @@
-def separate_out_entities(ledger, all_entries):
+def separate_out_entities(ledger):
+    all_entries = {}
     for transaction in range(len(ledger)):
         entries = (ledger[transaction]['entries'])
 
@@ -11,6 +12,7 @@ def separate_out_entities(ledger, all_entries):
                 all_entries[account] = new_amount
             else:
                 all_entries[account] = amount
+    return all_entries
 
 
 def separate_expenses(all_balances):

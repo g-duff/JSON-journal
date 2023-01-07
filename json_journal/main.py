@@ -7,10 +7,9 @@ from json_journal import data_analysis
 if __name__ == '__main__':
 
     json_file = 'finances.json'
-    entries = {}
     ledger = file_io.load_json_file(json_file)
 
-    organise_data.separate_out_entities(ledger, entries)
+    entries = organise_data.separate_out_entities(ledger)
     expenses = organise_data.separate_expenses(entries)
     file_io.save_expenses_as_json(expenses)
 

@@ -1,21 +1,26 @@
 from json_journal import data_analysis
 from json_journal import file_io
-from json_journal import organise_data
+from json_journal import filters
 from json_journal import tabulate_data
 
 
 
 if __name__ == '__main__':
 
-    json_file = 'finances.json'
-    ledger = file_io.load_json_file(json_file)
+    personal_finance_directory = "../Prod/"
 
-    entries = organise_data.separate_out_entities(ledger)
-    expenses = organise_data.separate_expenses(entries)
-    file_io.save_json_file(expenses, "json_files/expenses.json")
+    ledger_filepath = personal_finance_directory + "finances.json"
+    expenses_filepath = personal_finance_directory + "expenses.json"
+    balance_filepath = personal_finance_directory + "balance.json"
+    
+    ledger = file_io.load_json_file(ledger_filepath)
 
-    file_io.save_json_file(entries, "json_files/balance.json")
-    balances = organise_data.separate_main_accounts(entries)
-    sorted_accounts = sorted(balances.keys())
-    tabulate_data.tabulate_sorted_entries(balances, sorted_accounts)
-    print("Total =", data_analysis.total_profit(entries))
+    full_account_name_balance = data_analysis.calculate_balance(ledger)
+    expenses = filters.filter_balances_to_expenses(full_account_name_balance)
+    file_io.save_json_file(expenses, expenses_filepath)
+
+    file_io.save_json_file(full_account_name_balance, balance_filepath)
+    parent_account_name_balances = data_analysis.parent_account_balances(full_account_name_balance)
+    sorted_accounts = sorted(parent_account_name_balances.keys())
+    tabulate_data.tabulate_sorted_entries(parent_account_name_balances, sorted_accounts)
+    print("Total =", data_analysis.total_profit(full_account_name_balance))

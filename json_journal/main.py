@@ -11,9 +11,9 @@ if __name__ == '__main__':
 
     entries = organise_data.separate_out_entities(ledger)
     expenses = organise_data.separate_expenses(entries)
-    file_io.save_expenses_as_json(expenses)
+    file_io.save_json_file(expenses, "json_files/expenses.json")
 
-    file_io.save_all_balances_as_json(entries)
+    file_io.save_json_file(entries, "json_files/balance.json")
     balances = organise_data.separate_main_accounts(entries)
     sorted_accounts = sorted(balances.keys())
     tabulate_data.tabulate_sorted_entries(balances, sorted_accounts)

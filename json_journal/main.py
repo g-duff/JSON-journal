@@ -1,7 +1,8 @@
-from json_journal import file_io
-from json_journal import tabulate_data
-from json_journal import organise_data
 from json_journal import data_analysis
+from json_journal import file_io
+from json_journal import organise_data
+from json_journal import tabulate_data
+
 
 
 if __name__ == '__main__':

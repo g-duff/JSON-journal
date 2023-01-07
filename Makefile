@@ -10,6 +10,9 @@ dev_dependencies: .venv
 editable_install: dev_dependencies
 	${environment_bin}/pip3 install --editable .
 
+format:
+	${environment_bin}/autopep8 --in-place ./json_journal/*py ./tests/*py
+
 lint_check:
 	${environment_bin}/pylint ./json_journal/*py ./tests/*py
 

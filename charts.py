@@ -18,11 +18,11 @@ def create_pie_chart(balances, axes):
 
 
 if __name__ == '__main__':
-    json_file = 'balance.json'
-    balances_data = load_balance(json_file)
+    balance_json_file = 'balance.json'
+    balances_data = load_balance(balance_json_file)
 
-    expenses_json = 'expenses.json'
-    expenses_data = load_balance(expenses_json)
+    expenses_json_file = 'expenses.json'
+    expenses_data = load_balance(expenses_json_file)
 
     fig, (left_axes, right_axes) = plt.subplots(ncols=2)
     create_pie_chart(balances_data, left_axes)

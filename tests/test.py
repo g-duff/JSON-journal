@@ -1,6 +1,6 @@
 import unittest
-from json_journal.read_data import separate_expenses
-from json_journal.read_data import total_profit
+from json_journal.main import separate_expenses
+from json_journal.main import total_profit
 
 class TestSeparateExpenses(unittest.TestCase):
 

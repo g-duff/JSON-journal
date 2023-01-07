@@ -7,6 +7,7 @@ name = "json_journal"
 version = "0.0.0"
 authors = [
   { name="George Duffett" },
+  { name="Lucy Ebbitt" },
 ]
 description = "JSON Journal"
 readme = "README.md"

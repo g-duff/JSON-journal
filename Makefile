@@ -1,6 +1,6 @@
 SHELL = /bin/sh
 environment_bin := ./.venv/bin
-.PHONY: lint_check editable_install test
+.PHONY: format lint_check editable_install test
 
 
 dev_dependencies: .venv

@@ -15,7 +15,6 @@ def create_pie_chart(balances):
         account_list.append(account)
         amount_list.append(abs(amount))
     plt.pie(amount_list, labels = account_list)
-    plt.show()
 
 
 if __name__ == '__main__':
@@ -26,4 +25,5 @@ if __name__ == '__main__':
     expenses_json = 'expenses.json'
     expenses_data = load_balance(expenses_json)
     create_pie_chart(expenses_data)
+    plt.show()
 

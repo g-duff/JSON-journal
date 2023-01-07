@@ -9,12 +9,12 @@ def load_balance(json_file):
 
 
 def create_pie_chart(balances, axes):
-    account_list = []
-    amount_list = []
-    for account, amount in balances.items():
-        account_list.append(account)
-        amount_list.append(abs(amount))
-    axes.pie(amount_list, labels = account_list)
+    account_names = []
+    account_balances = []
+    for account_name, account_balance in balances.items():
+        account_names.append(account_name)
+        account_balances.append(abs(account_balance))
+    axes.pie(account_balances, labels = account_names)
 
 
 if __name__ == '__main__':

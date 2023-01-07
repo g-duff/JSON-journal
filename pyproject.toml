@@ -1,0 +1,19 @@
+[project]
+dependencies = [
+  "tabulate==0.9.0",
+  "matplotlib==3.6.2"
+]
+name = "json_journal"
+version = "0.0.0"
+authors = [
+  { name="George Duffett" },
+  { name="Lucy Ebbitt" },
+]
+description = "JSON Journal"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]

@@ -1,5 +1,5 @@
 import unittest
-from json_journal.main import total_profit
+from json_journal.data_analysis import total_profit
 
 class TestTotalProfit(unittest.TestCase):
 

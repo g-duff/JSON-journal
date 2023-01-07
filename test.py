@@ -1,6 +1,6 @@
 import unittest
 from read_data import separate_expenses
-from read_data import total_balance
+from read_data import total_profit
 
 class TestSeparateExpenses(unittest.TestCase):
 
@@ -37,7 +37,7 @@ class TestTotalBalance(unittest.TestCase):
         expected_total = 950  #(income * (-1)) - expenses) 
 
         # When
-        actual_total = total_balance(journal)
+        actual_total = total_profit(journal)
 
         # Then
         self.assertEqual(expected_total, actual_total)

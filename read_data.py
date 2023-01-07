@@ -59,7 +59,7 @@ def separate_main_accounts(all_balances):
     return new_balances
 
 
-def total_balance(all_balances):
+def total_profit(all_balances):
     expenses = 0
     income = 0
     for account in all_balances: 
@@ -90,4 +90,4 @@ if __name__ == '__main__':
     balances = separate_main_accounts(entries)
     sorted_accounts = sorted(balances.keys())
     tabulate_sorted_entries(balances, sorted_accounts)
-    print("Total =", total_balance(entries))
+    print("Total =", total_profit(entries))

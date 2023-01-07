@@ -1,3 +1,5 @@
+from matplotlib import pyplot as plt
+from json_journal import charts
 from json_journal import data_analysis
 from json_journal import file_io
 from json_journal import filters
@@ -24,3 +26,8 @@ if __name__ == '__main__':
     sorted_accounts = sorted(parent_account_name_balances.keys())
     tabulate_data.tabulate_sorted_entries(parent_account_name_balances, sorted_accounts)
     print("Total =", data_analysis.total_profit(full_account_name_balance))
+
+    fig, (left_axes, right_axes) = plt.subplots(ncols=2)
+    charts.create_pie_chart(full_account_name_balance, left_axes)
+    charts.create_pie_chart(expenses, right_axes)
+    plt.show()

@@ -1,11 +1,11 @@
 def separate_out_entities(ledger):
     all_entries = {}
-    for transaction in range(len(ledger)):
-        entries = (ledger[transaction]['entries'])
+    for transaction in ledger:
+        entries = transaction['entries']
 
-        for entry in range(len(entries)):
-            amount = (entries[entry])['amount']
-            account = (entries[entry])['account']
+        for entry in entries:
+            amount = entry['amount']
+            account = entry['account']
 
             if account in all_entries:
                 new_amount = amount + all_entries.get(account)

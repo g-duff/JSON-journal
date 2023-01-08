@@ -1,3 +1,5 @@
+# pylint: disable = import-error, missing-class-docstring, missing-function-docstring, missing-module-docstring
+
 def create_pie_chart(balances, axes):
     account_names = []
     account_balances = []

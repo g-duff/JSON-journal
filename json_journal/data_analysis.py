@@ -1,3 +1,5 @@
+# pylint: disable = import-error, missing-class-docstring, missing-function-docstring, missing-module-docstring
+
 def calculate_balance(ledger):
     all_entries = {}
     for transaction in ledger:

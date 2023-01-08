@@ -15,9 +15,9 @@ def tabulate_sorted_entries(all_entries, sorted_accounts):
 
     Returns
     -------
-    Table printed in the console of balances sorted alphabetically by account name.
+    Table of balances sorted alphabetically by account name.
     '''
     output_rows = [[account_name, all_entries[account_name]]
                    for account_name in sorted_accounts]
     output_headers = ["Account", "Amount"]
-    print(tabulate(output_rows, headers=output_headers))
+    return tabulate(output_rows, headers=output_headers)

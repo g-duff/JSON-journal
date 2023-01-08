@@ -1,6 +1,8 @@
-# pylint: disable = import-error, missing-class-docstring, missing-function-docstring, missing-module-docstring
+'''Functions for various analysis on data'''
 
 def calculate_balance(ledger):
+    '''ledger -> loaded json file.
+    Returns dictionary of full account names and balances for each account'''
     all_entries = {}
     for transaction in ledger:
         entries = transaction['entries']
@@ -18,6 +20,8 @@ def calculate_balance(ledger):
 
 
 def parent_account_balances(full_account_name_balances):
+    '''full_account_name_balances -> dictionary of full account names and balances for each account.
+    Returns dictionary of parent account and corresponding balances'''
     new_balances = {}
     for full_account_name in full_account_name_balances.keys():
         account_separated = full_account_name.split(':')
@@ -30,17 +34,19 @@ def parent_account_balances(full_account_name_balances):
     return new_balances
 
 
-def total_profit(all_balances):
+def total_profit(full_account_name_balances):
+    '''all_balances -> dictionary of full account names and balances for each account.
+    Returns profit value'''
     expenses = 0
     income = 0
-    for account in all_balances:
+    for account in full_account_name_balances:
         if account.startswith("expense:"):
-            expenses += all_balances[account]
+            expenses += full_account_name_balances[account]
         else:
             pass
-    for account in all_balances:
+    for account in full_account_name_balances:
         if account.startswith("income:"):
-            income += all_balances[account]
+            income += full_account_name_balances[account]
         else:
             pass
     total = (income * (-1)) - expenses

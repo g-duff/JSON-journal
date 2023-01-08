@@ -1,4 +1,4 @@
-'''Functions to load and save json files'''
+'''Functions to interact with json files'''
 import json
 
 

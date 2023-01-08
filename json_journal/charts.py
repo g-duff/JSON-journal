@@ -1,4 +1,4 @@
-'''Create pie chart'''
+'''Create charts'''
 
 def create_pie_chart(balances, axes):
     '''balances -> dictionary of full account names and balances for each account,

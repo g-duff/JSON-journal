@@ -1,4 +1,4 @@
-'''Filter balances to expenses'''
+'''Filter existing data'''
 
 def filter_balances_to_expenses(all_balances):
     '''all_balances -> dictionary with full account name and corresponding balance.

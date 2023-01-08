@@ -7,7 +7,7 @@ class TestTotalProfit(unittest.TestCase):
 
     def test_simplecase(self):
         # Given
-        journal = {
+        balances = {
             'income:job': -1000, 'assets:current': 950,
             'expense:groceries': 50
         }
@@ -17,7 +17,7 @@ class TestTotalProfit(unittest.TestCase):
         expected_profit = (expected_income * (-1)) - expected_expenses
 
         # When
-        actual_profit = total_profit(journal)
+        actual_profit = total_profit(balances)
 
         # Then
         self.assertEqual(expected_profit, actual_profit)

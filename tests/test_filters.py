@@ -7,7 +7,7 @@ class TestBalanceToExpenses(unittest.TestCase):
 
     def test_simplecase(self):
         # Given
-        journal = {
+        balances = {
             'expense:eatingout': 100, 'assets:current': -150,
             'expense:groceries': 50
         }
@@ -18,7 +18,7 @@ class TestBalanceToExpenses(unittest.TestCase):
         }
 
         # When
-        actual_expenses = filter_balances_to_expenses(journal)
+        actual_expenses = filter_balances_to_expenses(balances)
 
         # Then
         self.assertEqual(expected_expenses, actual_expenses)

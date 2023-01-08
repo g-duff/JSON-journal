@@ -7,8 +7,8 @@ class TestTotalProfit(unittest.TestCase):
     def test_simplecase(self):
         # Given
         journal = {
-            'income:job': -1000, 'assets:current': 1000,
-            'expense:groceries': 50, 'assets:current': -50
+            'income:job': -1000, 'assets:current': 950,
+            'expense:groceries': 50
         }
 
         expected_income = -1000

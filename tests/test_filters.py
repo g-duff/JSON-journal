@@ -7,8 +7,8 @@ class TestBalanceToExpenses(unittest.TestCase):
     def test_simplecase(self):
         # Given
         journal = {
-            'expense:eatingout': 100, 'assets:current': -100,
-            'expense:groceries': 50, 'assets:current': -50
+            'expense:eatingout': 100, 'assets:current': -150,
+            'expense:groceries': 50
         }
 
         expected_expenses = {

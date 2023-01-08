@@ -42,9 +42,6 @@ def total_profit(full_account_name_balances):
     for account in full_account_name_balances:
         if account.startswith("expense:"):
             expenses += full_account_name_balances[account]
-        else:
-            pass
-    for account in full_account_name_balances:
         if account.startswith("income:"):
             income += full_account_name_balances[account]
         else:

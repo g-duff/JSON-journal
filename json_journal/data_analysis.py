@@ -1,9 +1,21 @@
 '''Functions for various analysis on data'''
 
+
 def calculate_balance(ledger):
-    '''ledger -> loaded json file.
-    Returns dictionary of full account names and balances for each account'''
-    all_entries = {}
+    '''
+    Calculate balance for all entries.
+
+    Parameters
+    ----------
+    Ledger : dict
+        Loaded json file.
+
+    Returns
+    -------
+    All_balances : dict
+        Contains full account names and balances for each account.
+    '''
+    all_balances = {}
     for transaction in ledger:
         entries = transaction['entries']
 
@@ -11,17 +23,28 @@ def calculate_balance(ledger):
             amount = entry['amount']
             account = entry['account']
 
-            if account in all_entries:
-                new_amount = amount + all_entries.get(account)
-                all_entries[account] = new_amount
+            if account in all_balances:
+                new_amount = amount + all_balances.get(account)
+                all_balances[account] = new_amount
             else:
-                all_entries[account] = amount
-    return all_entries
+                all_balances[account] = amount
+    return all_balances
 
 
 def parent_account_balances(full_account_name_balances):
-    '''full_account_name_balances -> dictionary of full account names and balances for each account.
-    Returns dictionary of parent account and corresponding balances'''
+    '''
+    Calculate balances for all parent accounts.
+
+    Parameters
+    ----------
+    Full_account_name_balances : dict
+        Contains the full account name and corresponding balance.
+
+    Returns
+    -------
+    New_balances : dict
+        Contains balances for each parent account.
+    '''
     new_balances = {}
     for full_account_name in full_account_name_balances.keys():
         account_separated = full_account_name.split(':')
@@ -35,8 +58,19 @@ def parent_account_balances(full_account_name_balances):
 
 
 def total_profit(full_account_name_balances):
-    '''all_balances -> dictionary of full account names and balances for each account.
-    Returns profit value'''
+    '''
+    Calculate the total profit.
+
+    Parameters
+    ----------
+    Full_account_name_balances : dict
+        Contains the full account name and corresponding balance.
+
+    Returns
+    -------
+    Total : int
+        Total profit value.
+    '''
     expenses = 0
     income = 0
     for account in full_account_name_balances:

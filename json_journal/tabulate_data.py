@@ -3,9 +3,20 @@ from tabulate import tabulate
 
 
 def tabulate_sorted_entries(all_entries, sorted_accounts):
-    '''all_entries -> dictionary with the full account name and corresponding balance,
-    sorted_accounts -> parent account names sorted alphabetically.
-    Returns a tabulated table printed in the console'''
+    '''
+     Show balances in a table sorted alphabetically by account name.
+
+    Parameters
+    ----------
+    All_entries : dict
+        Contains the full account name and corresponding balance.
+    Sorted_accounts : list
+        Contains the parent account names sorted alphabetically.
+
+    Returns
+    -------
+    Table printed in the console of balances sorted alphabetically by account name.
+    '''
     output_rows = [[account_name, all_entries[account_name]]
                    for account_name in sorted_accounts]
     output_headers = ["Account", "Amount"]

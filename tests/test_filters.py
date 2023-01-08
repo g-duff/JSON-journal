@@ -1,3 +1,4 @@
+# pylint: disable = import-error, missing-class-docstring, missing-function-docstring, missing-module-docstring
 import unittest
 from json_journal.filters import filter_balances_to_expenses
 

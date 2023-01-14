@@ -13,7 +13,7 @@ editable_install: dev_dependencies
 format:
 	${environment_bin}/autopep8 --in-place ./json_journal/*py ./tests/*py
 
-lint_check:
+lint:
 	${environment_bin}/pylint ./json_journal/*py ./tests/*py
 
 test:

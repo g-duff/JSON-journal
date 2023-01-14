@@ -1,5 +1,5 @@
 '''Functions for various analysis on data'''
-
+COLON = ':'
 
 def calculate_balance(ledger):
     '''
@@ -47,9 +47,9 @@ def parent_account_balances(full_account_name_balances):
     '''
     new_balances = {}
     for full_account_name in full_account_name_balances.keys():
-        account_separated = full_account_name.split(':')
+        account_separated = full_account_name.split(COLON)
         for child_account_name in range(len(account_separated)):
-            parent_account = ':'.join(account_separated[:child_account_name+1])
+            parent_account = COLON.join(account_separated[:child_account_name+1])
             if parent_account in new_balances:
                 new_balances[parent_account] += full_account_name_balances[full_account_name]
             else:

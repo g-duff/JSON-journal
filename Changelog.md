@@ -1,4 +1,4 @@
-## [Unreleased] (07/01/23)
+## [Unreleased]
 
 ### Added
 - Read and save json files

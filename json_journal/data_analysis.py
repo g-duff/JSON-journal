@@ -1,4 +1,7 @@
 '''Functions for various analysis on data'''
+from datetime import date
+
+
 ACCOUNT_NAME_SEPARATOR = ':'
 
 def calculate_balance(ledger):
@@ -82,3 +85,28 @@ def total_profit(full_account_name_balances):
             pass
     total = (income * (-1)) - expenses
     return total
+
+
+def monthly_profit(ledger):
+    monthly_profit = {}
+    for transacton in ledger:
+        transaction_date = transacton['date']
+        separate_date = transaction_date.split('/')
+        month = separate_date[1]
+        entries = transacton['entries']
+        for entry in entries:
+            full_account_name = entry['account']
+            amount = entry['amount']
+            if (full_account_name.startswith("expense:")) and (month not in monthly_profit):
+                monthly_profit[month] = -amount
+            elif (full_account_name.startswith("expense:")) and (month in monthly_profit):
+                new_amount_expense = monthly_profit.get(month) - amount
+                monthly_profit[month] = new_amount_expense
+            elif (full_account_name.startswith("income:")) and (month not in monthly_profit):
+                monthly_profit[month] = (amount * (-1))
+            elif (full_account_name.startswith("income:")) and (month in monthly_profit):
+                new_amount_income = (amount * (-1)) + monthly_profit.get(month)
+                monthly_profit[month] = new_amount_income
+            else:
+                pass
+    return monthly_profit    

@@ -38,6 +38,5 @@ def create_line_graph(cumulative_profit, axes):
     -------
     Line graph ready to be shown (n.b. plt.show needs to be called on this line graph)
     '''
-    dates = cumulative_profit[0]
-    profits = cumulative_profit[1]
+    dates, profits = cumulative_profit
     axes.plot(dates, profits)

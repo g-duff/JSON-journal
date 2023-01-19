@@ -22,3 +22,11 @@ def create_pie_chart(balances, axes):
         account_names.append(account_name)
         account_balances.append(abs(account_balance))
     axes.pie(account_balances, labels=account_names)
+
+def create_line_graph(monthly_profit, axes):
+    dates = []
+    profits = []
+    for date, profit in monthly_profit.items():
+        dates.append(date)
+        profits.append(profit)
+    axes.plot(dates, profits)

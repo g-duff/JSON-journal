@@ -88,6 +88,19 @@ def total_profit(full_account_name_balances):
 
 
 def monthly_profit(ledger):
+    '''
+    Calculate the monthly profit.
+
+    Parameters
+    ----------
+    Ledger : dict
+       Loaded json file.
+
+    Returns
+    -------
+    Monthly_profit : dict
+       Contains the month number and the corresponding profit for that month.
+    '''
     monthly_profit = {}
     for transacton in ledger:
         transaction_date = transacton['date']

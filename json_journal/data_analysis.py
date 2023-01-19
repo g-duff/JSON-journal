@@ -111,10 +111,8 @@ def cumulative_profit(ledger):
         for entry in entries:
             amount = entry['amount']
             account = entry['account']
-            if account.startswith("expense:"):
+            if (account.startswith("expense:") or account.startswith("income")):
                 profit -= amount
-            if account.startswith("income:"):
-                profit += (amount * (-1))
             else:
                 pass
 

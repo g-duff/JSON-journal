@@ -36,7 +36,7 @@ class TestCumulativeProfit(unittest.TestCase):
                     {"account" : "assets:tsb", "amount" : 2000}
                 ]
             } ,
-    
+
             {
                 "date" : "2022-11-01",
                 "description" : "food",
@@ -44,8 +44,8 @@ class TestCumulativeProfit(unittest.TestCase):
                 {"account" : "expense:food", "amount" : 20},
                 {"account" : "assets:tsb", "amount" : -20}
             ]
-        } , 
-    
+        },
+
         {
             "date" : "2022-11-03",
             "description" : "gym membership",
@@ -58,7 +58,7 @@ class TestCumulativeProfit(unittest.TestCase):
         expected_dates = ['2022-11-01', '2022-11-03']
         expected_cumulative_profits = [1980, 1960]
 
-        # When 
+        # When
         actual_dates = data_analysis.cumulative_profit(ledger)[0]
         actual_cumulative_profit = data_analysis.cumulative_profit(ledger)[1]
 

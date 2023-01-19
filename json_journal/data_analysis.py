@@ -87,39 +87,34 @@ def total_profit(full_account_name_balances):
     return total
 
 
-def monthly_profit(ledger):
-    '''
-    Calculate the monthly profit.
-
-    Parameters
-    ----------
-    Ledger : dict
-       Loaded json file.
-
-    Returns
-    -------
-    Monthly_profit : dict
-       Contains the month number and the corresponding profit for that month.
-    '''
-    monthly_profit = {}
-    for transacton in ledger:
-        transaction_date = transacton['date']
-        separate_date = transaction_date.split('/')
-        month = separate_date[1]
-        entries = transacton['entries']
+def cumulative_profit(ledger):
+    sorted_ledger = sorted(ledger, key=lambda d: d['date'])
+    dates = []
+    profits = []
+    for transaction in sorted_ledger:
+        transaction_date = transaction['date']
+        entries = transaction['entries']
+        profit = 0
         for entry in entries:
-            full_account_name = entry['account']
             amount = entry['amount']
-            if (full_account_name.startswith("expense:")) and (month not in monthly_profit):
-                monthly_profit[month] = -amount
-            elif (full_account_name.startswith("expense:")) and (month in monthly_profit):
-                new_amount_expense = monthly_profit.get(month) - amount
-                monthly_profit[month] = new_amount_expense
-            elif (full_account_name.startswith("income:")) and (month not in monthly_profit):
-                monthly_profit[month] = (amount * (-1))
-            elif (full_account_name.startswith("income:")) and (month in monthly_profit):
-                new_amount_income = (amount * (-1)) + monthly_profit.get(month)
-                monthly_profit[month] = new_amount_income
+            account = entry['account']
+            if account.startswith("expense:"):
+                profit -= amount
+            if account.startswith("income:"):
+                profit += (amount * (-1))
             else:
                 pass
-    return monthly_profit    
+
+        if transaction_date in dates:
+            new_profit = profit + profits[-1]
+            profits[-1] = new_profit
+        else:
+            dates.append(transaction_date)
+            profits.append(profit)
+    
+    cumulative_total = 0
+    cumulative_profits = []
+    for value in profits:
+        cumulative_total += value
+        cumulative_profits.append(cumulative_total)
+    return dates, cumulative_profits

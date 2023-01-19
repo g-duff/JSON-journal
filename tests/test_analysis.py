@@ -59,8 +59,7 @@ class TestCumulativeProfit(unittest.TestCase):
         expected_cumulative_profits = [1980, 1960]
 
         # When
-        actual_dates = data_analysis.cumulative_profit(ledger)[0]
-        actual_cumulative_profit = data_analysis.cumulative_profit(ledger)[1]
+        actual_dates, actual_cumulative_profit = data_analysis.cumulative_profit(ledger)
 
         # Then
         self.assertEqual(expected_dates, actual_dates)

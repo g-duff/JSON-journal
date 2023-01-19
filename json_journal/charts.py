@@ -23,14 +23,14 @@ def create_pie_chart(balances, axes):
         account_balances.append(abs(account_balance))
     axes.pie(account_balances, labels=account_names)
 
-def create_line_graph(monthly_profit, axes):
+def create_line_graph(cumulative_profit, axes):
     '''
     Create a line graph on given axes.
 
     Parameters
     ----------
-    Monthly_profit : dict
-        Contains the month number and the corresponding profit for that month.
+    Cumulative_profit : tuple
+        Contains a list for the x axis (dates) and a list for the y axis (profits).
     Axes : int
         Specifed axes for plotting the line graph.
 
@@ -38,9 +38,6 @@ def create_line_graph(monthly_profit, axes):
     -------
     Line graph ready to be shown (n.b. plt.show needs to be called on this line graph)
     '''
-    dates = []
-    profits = []
-    for date, profit in monthly_profit.items():
-        dates.append(date)
-        profits.append(profit)
+    dates = cumulative_profit[0]
+    profits = cumulative_profit[1]
     axes.plot(dates, profits)

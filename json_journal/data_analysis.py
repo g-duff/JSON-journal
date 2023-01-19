@@ -1,6 +1,4 @@
 '''Functions for various analysis on data'''
-from datetime import date
-
 
 ACCOUNT_NAME_SEPARATOR = ':'
 
@@ -88,6 +86,21 @@ def total_profit(full_account_name_balances):
 
 
 def cumulative_profit(ledger):
+    '''
+    Calculate the cumulative profit.
+
+    Parameters
+    ----------
+    Ledger : dict
+        Loaded json file.
+
+    Returns
+    -------
+    Dates : list
+        List of dates.
+    Cumulative_profit : list
+        List of cumulative total of profit.
+    '''
     sorted_ledger = sorted(ledger, key=lambda d: d['date'])
     dates = []
     profits = []
@@ -111,7 +124,7 @@ def cumulative_profit(ledger):
         else:
             dates.append(transaction_date)
             profits.append(profit)
-    
+
     cumulative_total = 0
     cumulative_profits = []
     for value in profits:

@@ -2,6 +2,7 @@
 
 ACCOUNT_NAME_SEPARATOR = ':'
 
+
 def calculate_balance(ledger):
     '''
     Calculate balance for all entries.
@@ -50,7 +51,8 @@ def parent_account_balances(full_account_name_balances):
     for full_account_name in full_account_name_balances.keys():
         account_separated = full_account_name.split(ACCOUNT_NAME_SEPARATOR)
         for child_account_name in range(len(account_separated)):
-            parent_account = ACCOUNT_NAME_SEPARATOR.join(account_separated[:child_account_name+1])
+            parent_account = ACCOUNT_NAME_SEPARATOR.join(
+                account_separated[:child_account_name+1])
             if parent_account in new_balances:
                 new_balances[parent_account] += full_account_name_balances[full_account_name]
             else:

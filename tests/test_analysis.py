@@ -29,37 +29,38 @@ class TestCumulativeProfit(unittest.TestCase):
         # Given
         ledger = [
             {
-                "date" : "2022-11-01",
-                "description" : "pay day",
-                "entries" : [
-                    {"account" : "income:job", "amount" : -2000},
-                    {"account" : "assets:tsb", "amount" : 2000}
+                "date": "2022-11-01",
+                "description": "pay day",
+                "entries": [
+                    {"account": "income:job", "amount": -2000},
+                    {"account": "assets:tsb", "amount": 2000}
                 ]
-            } ,
+            },
 
             {
-                "date" : "2022-11-01",
-                "description" : "food",
-                "entries" : [
-                {"account" : "expense:food", "amount" : 20},
-                {"account" : "assets:tsb", "amount" : -20}
-            ]
-        },
+                "date": "2022-11-01",
+                "description": "food",
+                "entries": [
+                    {"account": "expense:food", "amount": 20},
+                    {"account": "assets:tsb", "amount": -20}
+                ]
+            },
 
-        {
-            "date" : "2022-11-03",
-            "description" : "gym membership",
-            "entries" : [
-                {"account" : "expense:gym", "amount" : 20},
-                {"account" : "assets:tsb", "amount" : -20}
-            ]
-        } ]
+            {
+                "date": "2022-11-03",
+                "description": "gym membership",
+                "entries": [
+                    {"account": "expense:gym", "amount": 20},
+                    {"account": "assets:tsb", "amount": -20}
+                ]
+            }]
 
         expected_dates = ['2022-11-01', '2022-11-03']
         expected_cumulative_profits = [1980, 1960]
 
         # When
-        actual_dates, actual_cumulative_profit = data_analysis.cumulative_profit(ledger)
+        actual_dates, actual_cumulative_profit = data_analysis.cumulative_profit(
+            ledger)
 
         # Then
         self.assertEqual(expected_dates, actual_dates)

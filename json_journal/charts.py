@@ -23,6 +23,7 @@ def create_pie_chart(balances, axes):
         account_balances.append(abs(account_balance))
     axes.pie(account_balances, labels=account_names)
 
+
 def create_line_graph(cumulative_profit, axes):
     '''
     Create a line graph on given axes.

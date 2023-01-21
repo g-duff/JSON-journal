@@ -118,7 +118,10 @@ def cumulative_profit(ledger):
             else:
                 pass
 
-        if transaction_date in dates:
+        if not dates:
+            dates.append(transaction_date)
+            profits.append(profit)
+        elif transaction_date == dates[-1]:
             new_profit = profit + profits[-1]
             profits[-1] = new_profit
         else:

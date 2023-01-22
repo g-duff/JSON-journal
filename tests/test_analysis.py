@@ -29,7 +29,7 @@ class TestCumulativeProfit(unittest.TestCase):
         # Given
         ledger = [
             {
-                "date": "2022-11-01",
+                "date" : "2022-11-01",
                 "description": "pay day",
                 "entries": [
                     {"account": "income:job", "amount": -2000},
@@ -38,7 +38,7 @@ class TestCumulativeProfit(unittest.TestCase):
             },
 
             {
-                "date": "2022-11-01",
+                "date" : "2022-11-01",
                 "description": "food",
                 "entries": [
                     {"account": "expense:food", "amount": 20},
@@ -47,7 +47,7 @@ class TestCumulativeProfit(unittest.TestCase):
             },
 
             {
-                "date": "2022-11-03",
+                "date" : "2022-11-03",
                 "description": "gym membership",
                 "entries": [
                     {"account": "expense:gym", "amount": 20},

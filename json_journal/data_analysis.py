@@ -87,13 +87,42 @@ def total_profit(full_account_name_balances):
     return total
 
 
+def calculate_profit(ledger):
+    '''
+    Calculate the profit of a ledger file.
+
+    Parameters
+    ----------
+    Ledger : list of dicts
+        Loaded json file.
+
+    Returns
+    -------
+    Profit_calculated : int
+        Value of total profit.
+    '''
+    profit_sorted_ledger = sorted(ledger, key=lambda d: d['date'])
+    for transaction in profit_sorted_ledger:
+        entries = transaction['entries']
+        profit_calculated = 0
+        for entry in entries:
+            amount = entry['amount']
+            account = entry['account']
+            if account.startswith("expense:"):
+                profit_calculated -= amount
+            elif account.startswith("income"):
+                profit_calculated += ((-1) * amount)
+    return profit_calculated
+
+
+
 def cumulative_profit(ledger):
     '''
     Calculate the cumulative profit.
 
     Parameters
     ----------
-    Ledger : dict
+    Ledger : list of dicts
         Loaded json file.
 
     Returns
@@ -104,9 +133,11 @@ def cumulative_profit(ledger):
         List of cumulative total of profit.
     '''
     sorted_ledger = sorted(ledger, key=lambda d: d['date'])
-    dates = []
-    cumulative_profits = []
-    for transaction in sorted_ledger:
+
+    dates = [sorted_ledger[0]['date']]
+    cumulative_profits = [calculate_profit(sorted_ledger[0:1])]
+
+    for transaction in sorted_ledger[1:]:
         entries = transaction['entries']
         profit = 0
         for entry in entries:
@@ -118,10 +149,7 @@ def cumulative_profit(ledger):
                 profit += ((-1) * amount)
 
         transaction_date = transaction['date']
-        if not dates:  # change this to use the next date for the transactions
-            dates.append(transaction_date)
-            cumulative_profits.append(profit)
-        elif transaction_date == dates[-1]:
+        if transaction_date == dates[-1]:
             cumulative_profits[-1] += profit
         else:
             dates.append(transaction_date)

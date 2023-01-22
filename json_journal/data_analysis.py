@@ -113,12 +113,14 @@ def cumulative_profit(ledger):
         for entry in entries:
             amount = entry['amount']
             account = entry['account']
-            if (account.startswith("expense:") or account.startswith("income")):
+            if account.startswith("expense:"):
                 profit -= amount
+            elif account.startswith("income"):
+                profit += ((-1) * amount)
             else:
                 pass
 
-        if not dates:
+        if not dates:  # change this to use the next date for the transactions
             dates.append(transaction_date)
             profits.append(profit)
         elif transaction_date == dates[-1]:

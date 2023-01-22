@@ -100,7 +100,7 @@ def cumulative_profit(ledger):
     -------
     Dates : list
         List of dates.
-    Cumulative_profit : list
+    Cumulative_profits : list
         List of cumulative total of profit.
     '''
     sorted_ledger = sorted(ledger, key=lambda d: d['date'])

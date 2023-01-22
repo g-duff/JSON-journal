@@ -105,9 +105,8 @@ def cumulative_profit(ledger):
     '''
     sorted_ledger = sorted(ledger, key=lambda d: d['date'])
     dates = []
-    profits = []
+    cumulative_profits = []
     for transaction in sorted_ledger:
-        transaction_date = transaction['date']
         entries = transaction['entries']
         profit = 0
         for entry in entries:
@@ -117,22 +116,15 @@ def cumulative_profit(ledger):
                 profit -= amount
             elif account.startswith("income"):
                 profit += ((-1) * amount)
-            else:
-                pass
 
+        transaction_date = transaction['date']
         if not dates:  # change this to use the next date for the transactions
             dates.append(transaction_date)
-            profits.append(profit)
+            cumulative_profits.append(profit)
         elif transaction_date == dates[-1]:
-            new_profit = profit + profits[-1]
-            profits[-1] = new_profit
+            cumulative_profits[-1] += profit
         else:
             dates.append(transaction_date)
-            profits.append(profit)
+            cumulative_profits.append(cumulative_profits[-1] + profit)
 
-    cumulative_total = 0
-    cumulative_profits = []
-    for value in profits:
-        cumulative_total += value
-        cumulative_profits.append(cumulative_total)
     return dates, cumulative_profits

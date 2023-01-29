@@ -29,8 +29,8 @@ def check_entries_sum(ledger):
 
     Returns
     -------
-    Amount_sum : int
-        The sum of entry amounts in each transaction.
+    Print statement
+        A statement is printed to inform the user if the entries sum to zero or not.
     '''
     amount_sum = 0
     for transaction in ledger:

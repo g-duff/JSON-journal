@@ -1,5 +1,6 @@
 '''Data sorted before being used by analysis'''
 
+
 def sort_journal_by_date(ledger):
     '''
     Sort JSON file by date.
@@ -36,13 +37,12 @@ def check_entries_sum(ledger):
     for transaction in ledger:
         entries = transaction['entries']
 
-
         for entry in entries:
             amount = entry['amount']
             amount_sum += amount
-    
+
     if amount_sum == 0:
         print("Entries sum to zero")
     else:
         print("Entries do not sum to zero, but ", amount_sum)
-
+    return amount_sum

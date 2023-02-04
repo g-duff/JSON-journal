@@ -43,5 +43,5 @@ def check_entries_sum(ledger):
     if amount_sum == 0:
         print("Entries sum to zero")
     else:
-        print("Entries do not sum to zero, but ", amount_sum)
+        raise Warning("Entries do not sum to zero, but ", amount_sum)
     return amount_sum

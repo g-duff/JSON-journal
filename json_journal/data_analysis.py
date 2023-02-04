@@ -102,9 +102,9 @@ def calculate_profit(ledger):
         Value of total profit.
     '''
     profit_sorted_ledger = sorted(ledger, key=lambda d: d['date'])
+    profit_calculated = 0
     for transaction in profit_sorted_ledger:
         entries = transaction['entries']
-        profit_calculated = 0
         for entry in entries:
             amount = entry['amount']
             account = entry['account']

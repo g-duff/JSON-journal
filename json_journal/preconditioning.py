@@ -15,8 +15,7 @@ def sort_journal_by_date(ledger):
     Sorted_ledger : dict
         The same json file, ordered by date.
     '''
-    sorted_ledger = sorted(ledger, key=lambda d: d['date'])
-    return sorted_ledger
+    return sorted(ledger, key=lambda d: d['date'])
 
 
 def check_entries_sum(ledger):

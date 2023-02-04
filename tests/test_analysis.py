@@ -3,7 +3,7 @@ import unittest
 from json_journal import data_analysis
 
 
-class test_total_profit_happy_path(unittest.TestCase):
+class TestTotalProfitHappyPath(unittest.TestCase):
 
     def test_simplecase(self):
         # Given
@@ -23,7 +23,7 @@ class test_total_profit_happy_path(unittest.TestCase):
         self.assertEqual(expected_profit, actual_profit)
 
 
-class test_cumulative_profit_happy_path(unittest.TestCase):
+class TestCumulativeProfitHappyPath(unittest.TestCase):
 
     def test_simplecase(self):
         # Given

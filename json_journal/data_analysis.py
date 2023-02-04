@@ -111,7 +111,7 @@ def calculate_profit(ledger):
             if account.startswith("expense:"):
                 profit_calculated -= amount
             elif account.startswith("income"):
-                profit_calculated += ((-1) * amount)
+                profit_calculated += (-1) * amount
     return profit_calculated
 
 

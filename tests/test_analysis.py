@@ -5,7 +5,7 @@ from json_journal.data_analysis import total_profit
 
 class TestTotalProfit(unittest.TestCase):
 
-    def test_simplecase(self):
+    def test_simplecase_happypath(self):
         # Given
         balances = {
             'income:job': -1000, 'assets:current': 950,

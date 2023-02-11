@@ -89,12 +89,12 @@ def total_profit(full_account_name_balances):
 
 def calculate_profit(ledger):
     '''
-    Calculate the profit of a ledger file.
+    Calculate the profit from a ledger.
 
     Parameters
     ----------
-    Ledger : list of dicts
-        Loaded json file.
+    Ledger
+        Loaded json file or a list of dictionaries.
 
     Returns
     -------

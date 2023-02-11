@@ -31,6 +31,8 @@ def check_entries_sum_to_zero(ledger):
     -------
     Print statement
         A statement is printed to inform the user if the entries sum to zero or not.
+    Amount_sum : int
+        The value of the total sum of entries in the ledger. NB this is to use in tests.
     '''
     amount_sum = 0
     for transaction in ledger:
@@ -44,3 +46,4 @@ def check_entries_sum_to_zero(ledger):
         print("Entries sum to zero")
     else:
         raise Warning("Entries do not sum to zero, but ", amount_sum)
+    return amount_sum

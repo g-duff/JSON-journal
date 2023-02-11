@@ -146,7 +146,7 @@ def cumulative_profit(ledger):
             if account.startswith("expense:"):
                 profit -= amount
             elif account.startswith("income"):
-                profit += ((-1) * amount)
+                profit -= amount
 
         transaction_date = transaction['date']
         if transaction_date == dates[-1]:

@@ -18,7 +18,7 @@ def sort_journal_by_date(ledger):
     return sorted(ledger, key=lambda d: d['date'])
 
 
-def check_entries_sum(ledger):
+def check_entries_sum_to_zero(ledger):
     '''
     Check entries in a transaction sum to zero.
 

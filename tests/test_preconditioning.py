@@ -108,7 +108,7 @@ class TestEntriesSumToZero(unittest.TestCase):
         expected_amount_sum = 0
 
         # When
-        actual_amount_sum = preconditioning.check_entries_sum(ledger)
+        actual_amount_sum = preconditioning.check_entries_sum_to_zero(ledger)
 
         # Then
         self.assertEqual(expected_amount_sum, actual_amount_sum)

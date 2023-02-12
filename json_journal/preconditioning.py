@@ -8,12 +8,12 @@ def sort_journal_by_date(ledger):
     Parameters
     ----------
     Ledger : dict
-        Loaded json file.
+        Dictionary with dates, descriptions and entries.
 
     Returns
     -------
     Sorted_ledger : dict
-        The same json file, ordered by date.
+        Dictionary sorted by date with descriptions and entries.
     '''
     return sorted(ledger, key=lambda d: d['date'])
 

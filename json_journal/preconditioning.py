@@ -3,7 +3,7 @@
 
 def sort_journal_by_date(ledger):
     '''
-    Sort JSON file by date.
+    Sort dictionary by date.
 
     Parameters
     ----------
@@ -29,8 +29,6 @@ def check_entries_sum_to_zero(ledger):
 
     Returns
     -------
-    Print statement
-        A statement is printed to inform the user if the entries sum to zero or not.
     Amount_sum : int
         The value of the total sum of entries in the ledger. NB this is to use in tests.
     '''

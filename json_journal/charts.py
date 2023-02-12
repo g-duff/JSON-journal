@@ -11,10 +11,6 @@ def create_pie_chart(balances, axes):
         Full account names and balances for each account.
     Axes : int
         Specifed axes for plotting the pie chart.
-
-    Returns
-    -------
-    Pie chart ready to be shown (n.b. plt.show needs to be called on this pie chart)
     '''
     account_names = []
     account_balances = []
@@ -34,10 +30,6 @@ def create_line_graph(cumulative_profit, axes):
         Contains a list for the x axis (dates) and a list for the y axis (profits).
     Axes : int
         Specifed axes for plotting the line graph.
-
-    Returns
-    -------
-    Line graph ready to be shown (n.b. plt.show needs to be called on this line graph)
     '''
     dates, profits = cumulative_profit
     axes.plot([np.datetime64(d) for d in dates], profits)

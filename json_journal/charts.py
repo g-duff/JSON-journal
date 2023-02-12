@@ -1,5 +1,5 @@
 '''Create charts'''
-
+import numpy as np
 
 def create_pie_chart(balances, axes):
     '''
@@ -11,10 +11,6 @@ def create_pie_chart(balances, axes):
         Full account names and balances for each account.
     Axes : int
         Specifed axes for plotting the pie chart.
-
-    Returns
-    -------
-    Pie chart ready to be shown (n.b. plt.show needs to be called on this pie chart)
     '''
     account_names = []
     account_balances = []
@@ -22,3 +18,18 @@ def create_pie_chart(balances, axes):
         account_names.append(account_name)
         account_balances.append(abs(account_balance))
     axes.pie(account_balances, labels=account_names)
+
+
+def create_line_graph(cumulative_profit, axes):
+    '''
+    Create a line graph on given axes.
+
+    Parameters
+    ----------
+    Cumulative_profit : tuple
+        Contains a list for the x axis (dates) and a list for the y axis (profits).
+    Axes : int
+        Specifed axes for plotting the line graph.
+    '''
+    dates, profits = cumulative_profit
+    axes.plot([np.datetime64(d) for d in dates], profits)

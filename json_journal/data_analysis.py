@@ -1,4 +1,5 @@
 '''Functions for various analysis on data'''
+
 ACCOUNT_NAME_SEPARATOR = ':'
 
 
@@ -70,17 +71,87 @@ def total_profit(full_account_name_balances):
 
     Returns
     -------
-    Total : int
+    Total : float
         Total profit value.
     '''
     expenses = 0
     income = 0
     for account in full_account_name_balances:
-        if account.startswith("expense:"):
+        if account.startswith("expense"):
             expenses += full_account_name_balances[account]
-        if account.startswith("income:"):
+        if account.startswith("income"):
             income += full_account_name_balances[account]
         else:
             pass
-    total = (income * (-1)) - expenses
+    total = - income - expenses
     return total
+
+
+def calculate_profit(ledger):
+    '''
+    Calculate the profit from a ledger.
+
+    Parameters
+    ----------
+    Ledger
+        Loaded json file or a list of dictionaries.
+
+    Returns
+    -------
+    Profit_calculated : float
+        Value of total profit.
+    '''
+    profit_sorted_ledger = sorted(ledger, key=lambda d: d['date'])
+    profit_calculated = 0
+    for transaction in profit_sorted_ledger:
+        entries = transaction['entries']
+        for entry in entries:
+            amount = entry['amount']
+            account = entry['account']
+            if account.startswith("expense"):
+                profit_calculated -= amount
+            elif account.startswith("income"):
+                profit_calculated -= amount
+    return profit_calculated
+
+
+
+def cumulative_profit(ledger):
+    '''
+    Calculate the cumulative profit.
+
+    Parameters
+    ----------
+    Ledger : list of dicts
+
+    Returns
+    -------
+    Dates : list
+        List of dates.
+    Cumulative_profits : list
+        List of cumulative total of profit.
+    '''
+    sorted_ledger = sorted(ledger, key=lambda d: d['date'])
+
+    dates = [sorted_ledger[0]['date']]
+    cumulative_profits = [calculate_profit(sorted_ledger[0:1])]
+
+    for transaction in sorted_ledger[1:]:
+        entries = transaction['entries']
+        profit = 0
+        for entry in entries:
+            amount = entry['amount']
+            account = entry['account']
+            if account.startswith("expense:"):
+                profit -= amount
+            elif account.startswith("income"):
+                profit -= amount
+
+        transaction_date = transaction['date']
+        if transaction_date == dates[-1]:
+            cumulative_profits[-1] += profit
+        else:
+            dates.append(transaction_date)
+            cumulative_profits.append(cumulative_profits[-1] + profit)
+
+    return dates, cumulative_profits

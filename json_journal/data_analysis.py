@@ -71,19 +71,19 @@ def total_profit(full_account_name_balances):
 
     Returns
     -------
-    Total : int
+    Total : float
         Total profit value.
     '''
     expenses = 0
     income = 0
     for account in full_account_name_balances:
-        if account.startswith("expense:"):
+        if account.startswith("expense"):
             expenses += full_account_name_balances[account]
-        if account.startswith("income:"):
+        if account.startswith("income"):
             income += full_account_name_balances[account]
         else:
             pass
-    total = (income * (-1)) - expenses
+    total = - income - expenses
     return total
 
 
@@ -108,10 +108,10 @@ def calculate_profit(ledger):
         for entry in entries:
             amount = entry['amount']
             account = entry['account']
-            if account.startswith("expense:"):
+            if account.startswith("expense"):
                 profit_calculated -= amount
             elif account.startswith("income"):
-                profit_calculated += (-1) * amount
+                profit_calculated -= amount
     return profit_calculated
 
 
@@ -123,7 +123,6 @@ def cumulative_profit(ledger):
     Parameters
     ----------
     Ledger : list of dicts
-        Loaded json file.
 
     Returns
     -------

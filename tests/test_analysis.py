@@ -5,7 +5,7 @@ from json_journal import data_analysis
 
 class TestTotalProfit(unittest.TestCase):
 
-    def test_simplecase(self):
+    def test_happypath(self):
         # Given
         balances = {
             'income:job': -1000, 'assets:current': 950,
@@ -14,7 +14,7 @@ class TestTotalProfit(unittest.TestCase):
 
         expected_income = -1000
         expected_expenses = 50
-        expected_profit = (expected_income * (-1)) - expected_expenses
+        expected_profit = - expected_income - expected_expenses
 
         # When
         actual_profit = data_analysis.total_profit(balances)
@@ -25,7 +25,7 @@ class TestTotalProfit(unittest.TestCase):
 
 class TestCumulativeProfit(unittest.TestCase):
 
-    def test_simplecase_happypath(self):
+    def test_happypath(self):
         # Given
         ledger = [
             {

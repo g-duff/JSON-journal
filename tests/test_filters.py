@@ -5,7 +5,7 @@ from json_journal.filters import filter_balances_to_expenses
 
 class TestBalanceToExpensesHappyPath(unittest.TestCase):
 
-    def test_simplecase(self):
+    def test_happypath(self):
         # Given
         balances = {
             'expense:eatingout': 100, 'assets:current': -150,

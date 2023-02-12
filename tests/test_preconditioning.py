@@ -5,7 +5,7 @@ from json_journal import preconditioning
 
 class TestSortLedger(unittest.TestCase):
 
-    def test_simplesortingcase_happypath(self):
+    def test_happypath(self):
         # Given
         ledger = [
             {
@@ -74,7 +74,7 @@ class TestSortLedger(unittest.TestCase):
 
 class TestEntriesSumToZero(unittest.TestCase):
 
-    def test_simplecase_happypath(self):
+    def test_happypath(self):
         # Given
         ledger = [
             {

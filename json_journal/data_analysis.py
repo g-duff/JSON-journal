@@ -98,7 +98,7 @@ def calculate_profit(ledger):
 
     Returns
     -------
-    Profit_calculated : int
+    Profit_calculated : float
         Value of total profit.
     '''
     profit_sorted_ledger = sorted(ledger, key=lambda d: d['date'])

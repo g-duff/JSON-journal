@@ -25,7 +25,7 @@ def check_entries_sum_to_zero(ledger):
     Parameters
     ----------
     Ledger : dict
-        Loaded json file.
+        Dictionary with dates, descriptions and entries.
 
     Returns
     -------

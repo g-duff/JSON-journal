@@ -71,6 +71,38 @@ class TestSortLedger(unittest.TestCase):
         # Then
         self.assertEqual(expected_ledger, actual_ledger)
 
+    def test_ledgersortnodates_error(self):
+        # Given
+        ledger = [
+            {
+                "description": "bills",
+                "entries": [
+                    {"account": "expense:bills", "amount": 650},
+                    {"account": "assets:bank", "amount": -650}
+                ]
+            },
+
+            {
+                "description": "gym membership",
+                "entries": [
+                    {"account": "expense:gym", "amount": 10},
+                    {"account": "assets:bank", "amount": -10}
+                ]
+            },
+
+            {
+                "description": "savings",
+                "entries": [
+                    {"account": "assets:savings", "amount": 50},
+                    {"account": "assets:bank", "amount": -50}
+                ]
+            }
+        ]
+
+        # When / Then
+        with self.assertRaises(KeyError):
+            preconditioning.sort_journal_by_date(ledger)
+
 
 class TestEntriesSumToZero(unittest.TestCase):
 

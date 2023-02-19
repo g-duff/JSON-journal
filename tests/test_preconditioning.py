@@ -5,7 +5,7 @@ from json_journal import preconditioning
 
 class TestSortLedger(unittest.TestCase):
 
-    def test_happypath(self):
+    def test_ledgersorted_happypath(self):
         # Given
         ledger = [
             {
@@ -74,7 +74,7 @@ class TestSortLedger(unittest.TestCase):
 
 class TestEntriesSumToZero(unittest.TestCase):
 
-    def test_happypath(self):
+    def test_doessumtozero_happypath(self):
         # Given
         ledger = [
             {
@@ -113,9 +113,8 @@ class TestEntriesSumToZero(unittest.TestCase):
         # Then
         self.assertEqual(expected_amount_sum, actual_amount_sum)
 
-class TestEntriesDoNotSumToZeroError(unittest.TestCase):
 
-    def test_happypath(self):
+    def test_doesnotsumtozero_warningappears(self):
         # Given
         ledger = [
             {

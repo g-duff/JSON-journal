@@ -112,3 +112,40 @@ class TestEntriesSumToZero(unittest.TestCase):
 
         # Then
         self.assertEqual(expected_amount_sum, actual_amount_sum)
+
+class TestEntriesDoNotSumToZeroError(unittest.TestCase):
+
+    def test_happypath(self):
+        # Given
+        ledger = [
+            {
+                "date": "2022-11-01",
+                "description": "bills",
+                "entries": [
+                    {"account": "expense:bills", "amount": 650},
+                    {"account": "assets:bank", "amount": -650}
+                ]
+            },
+
+            {
+                "date": "2022-12-03",
+                "description": "gym membership",
+                "entries": [
+                    {"account": "expense:gym", "amount": 10},
+                    {"account": "assets:bank", "amount": -1}
+                ]
+            },
+
+            {
+                "date": "2022-11-10",
+                "description": "savings",
+                "entries": [
+                    {"account": "assets:savings", "amount": 50},
+                    {"account": "assets:bank", "amount": -50}
+                ]
+            }
+        ]
+
+        # Then
+        with self.assertRaises(Warning):
+            preconditioning.check_entries_sum_to_zero(ledger)

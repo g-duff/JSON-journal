@@ -3,7 +3,7 @@ import unittest
 from json_journal.filters import filter_balances_to_expenses
 
 
-class TestBalanceToExpensesHappyPath(unittest.TestCase):
+class TestBalanceToExpenses(unittest.TestCase):
 
     def test_happypath(self):
         # Given

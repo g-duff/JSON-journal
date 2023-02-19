@@ -145,6 +145,6 @@ class TestEntriesSumToZero(unittest.TestCase):
             }
         ]
 
-        # Then
+        # When/Then
         with self.assertRaises(Warning):
             preconditioning.check_entries_sum_to_zero(ledger)

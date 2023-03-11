@@ -1,5 +1,8 @@
 SHELL = /bin/sh
-environment_bin := ./.venv/bin
+
+environment := ./.venv
+environment_bin := ${environment}/bin
+
 .PHONY: format editable_install lint_check test
 
 # Default Goal
@@ -20,4 +23,4 @@ test:
 	${environment_bin}/python3 -m unittest discover ./tests/ 'test_*.py'
 
 .venv:
-	python3 -m venv ./.venv
+	python3 -m venv ${environment}

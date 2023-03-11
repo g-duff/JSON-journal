@@ -1,14 +1,14 @@
 SHELL = /bin/sh
 environment_bin := ./.venv/bin
-.PHONY: format lint_check editable_install test
+.PHONY: format editable_install lint_check test
 
+# Default Goal
+editable_install: dev_dependencies
+	${environment_bin}/pip3 install --editable .
 
 dev_dependencies: .venv
 	${environment_bin}/pip3 install --upgrade pip
 	${environment_bin}/pip3 install -r ./requirements/dev.txt
-
-editable_install: dev_dependencies
-	${environment_bin}/pip3 install --editable .
 
 format:
 	${environment_bin}/autopep8 --in-place ./json_journal/*py ./tests/*py

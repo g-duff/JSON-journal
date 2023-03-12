@@ -10,12 +10,24 @@ pipeline {
 		}
 		stage('Lint') {
 			steps {
-				sh "make lint"
+				script {
+					try {
+						sh "make lint"
+					} catch (error) {
+						unstable(message: "${STAGE_NAME} is unstable")
+					}
+				}
 			}
 		}
 		stage('Test') { 
 			steps {
-				sh "make test"
+				script {
+					try {
+						sh "make test"
+					} catch (error) {
+						unstable(message: "${STAGE_NAME} is unstable")
+					}
+				}
 			}
 		}
 	}
@@ -41,6 +53,21 @@ pipeline {
 					}'
 					'''
 			}
+		}
+
+		unstable {
+				sh '''curl -L \
+					-X POST \
+					-H "Accept: application/vnd.github+json" \
+					-H "X-GitHub-Api-Version: 2022-11-28" \
+					"https://api.github.com/repos/g-duff/JSON-journal/statuses/$GIT_COMMIT" \
+					-H "Authorization: Bearer $TOKEN"\
+					-d '{\
+						"state": "error", \
+						"context": "continuous-integration/jenkins", \
+						"target_url": "https://github.com/g-duff/Jenkins" \
+					}'
+					'''
 		}
 
 		failure {

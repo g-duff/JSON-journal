@@ -22,3 +22,18 @@ class TestBalanceToExpenses(unittest.TestCase):
 
         # Then
         self.assertEqual(expected_expenses, actual_expenses)
+
+    def test_noexpense_noerror(self):
+        # Given
+        balances = {
+            'assets:saving': 100, 'assets:current': -150,
+        }
+
+        expected_expenses = {
+        }
+
+        # When
+        actual_expenses = filter_balances_to_expenses(balances)
+
+        # Then
+        self.assertEqual(expected_expenses, actual_expenses)

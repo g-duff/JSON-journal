@@ -34,7 +34,11 @@ pipeline {
 					-H "X-GitHub-Api-Version: 2022-11-28" \
 					"https://api.github.com/repos/g-duff/JSON-journal/statuses/$GIT_COMMIT" \
 					-H "Authorization: Bearer $TOKEN"\
-					-d '{"state":"success","context":"continuous-integration/jenkins"}'
+					-d '{\
+						"state": "success", \
+						"context": "continuous-integration/jenkins", \
+						"target_url": "https://github.com/g-duff/Jenkins" \
+					}'
 					'''
 			}
 		}
@@ -47,7 +51,11 @@ pipeline {
 					-H "X-GitHub-Api-Version: 2022-11-28" \
 					"https://api.github.com/repos/g-duff/JSON-journal/statuses/$GIT_COMMIT" \
 					-H "Authorization: Bearer $TOKEN"\
-					-d '{"state":"failure","context":"continuous-integration/jenkins"}'
+					-d '{\
+						"state": "failure", \
+						"context": "continuous-integration/jenkins", \
+						"target_url": "https://github.com/g-duff/Jenkins" \
+					}'
 					'''
 			}
 		}

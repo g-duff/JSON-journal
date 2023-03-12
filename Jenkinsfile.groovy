@@ -1,3 +1,5 @@
+@Library('pipeline-lib') _
+
 pipeline {
 	
 	agent { label 'python' }
@@ -39,51 +41,20 @@ pipeline {
 		}
 
 		success {
-			withCredentials([string(credentialsId: 'GitHubStatusToken', variable: 'TOKEN')]) {
-				sh '''curl -L \
-					-X POST \
-					-H "Accept: application/vnd.github+json" \
-					-H "X-GitHub-Api-Version: 2022-11-28" \
-					"https://api.github.com/repos/g-duff/JSON-journal/statuses/$GIT_COMMIT" \
-					-H "Authorization: Bearer $TOKEN"\
-					-d '{\
-						"state": "success", \
-						"context": "continuous-integration/jenkins", \
-						"target_url": "https://github.com/g-duff/Jenkins" \
-					}'
-					'''
+			script {
+				notifyGitHubBuildStatus("JSON-journal", "success")
 			}
 		}
 
 		unstable {
-				sh '''curl -L \
-					-X POST \
-					-H "Accept: application/vnd.github+json" \
-					-H "X-GitHub-Api-Version: 2022-11-28" \
-					"https://api.github.com/repos/g-duff/JSON-journal/statuses/$GIT_COMMIT" \
-					-H "Authorization: Bearer $TOKEN"\
-					-d '{\
-						"state": "error", \
-						"context": "continuous-integration/jenkins", \
-						"target_url": "https://github.com/g-duff/Jenkins" \
-					}'
-					'''
+			script {
+				notifyGitHubBuildStatus("JSON-journal", "error")
+			}
 		}
 
 		failure {
-			withCredentials([string(credentialsId: 'GitHubStatusToken', variable: 'TOKEN')]) {
-				sh '''curl -L \
-					-X POST \
-					-H "Accept: application/vnd.github+json" \
-					-H "X-GitHub-Api-Version: 2022-11-28" \
-					"https://api.github.com/repos/g-duff/JSON-journal/statuses/$GIT_COMMIT" \
-					-H "Authorization: Bearer $TOKEN"\
-					-d '{\
-						"state": "failure", \
-						"context": "continuous-integration/jenkins", \
-						"target_url": "https://github.com/g-duff/Jenkins" \
-					}'
-					'''
+			script {
+				notifyGitHubBuildStatus("JSON-journal", "failure")
 			}
 		}
 

@@ -48,13 +48,13 @@ pipeline {
 
 		unstable {
 			script {
-				notifyGitHubBuildStatus("JSON-journal", "error")
+				notifyGitHubBuildStatus("JSON-journal", "failure")
 			}
 		}
 
 		failure {
 			script {
-				notifyGitHubBuildStatus("JSON-journal", "failure")
+				notifyGitHubBuildStatus("JSON-journal", "error")
 			}
 		}
 

@@ -42,8 +42,9 @@ def save_json_file(all_data, file_path):
         file.write(json_string)
 
 
-# Add function for loading csv and turing it to json - example with monzo, how to do others - test - check for duplicates
-def csv_to_json(file):
+# Date format - test - check for duplicates
+
+def csv_to_json(file, bank):
     '''
     Convert a CSV file to a JSON.
 
@@ -51,6 +52,8 @@ def csv_to_json(file):
     ----------
     file : file path
         File path for the CSV.
+    bank : dict
+        Dictionary with the date, description and amount columns for the bank CSV.
 
     Returns
     -------
@@ -64,13 +67,15 @@ def csv_to_json(file):
         next(csv_file, None)
         for record in csv_file:
             dict = {}
-            date = record[1]
-            description = record[4]
-            amount = float(record[7])
+            date = record[bank['date']]
+            description = record[bank['description']]
+            amount = float(record[bank['amount']])
             dict['date'] = date
             dict['description'] = description
             dict['amount'] = amount
             json_file.append(dict)
+
     
     return json_file
+
 

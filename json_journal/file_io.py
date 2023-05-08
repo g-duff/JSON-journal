@@ -78,4 +78,8 @@ def csv_to_json(file, bank):
     
     return json_file
 
-
+def convert_date(date):
+    try date_split = date.split("/"):
+        new_date = date_split[2] + "/" + date_split[1] + "/" + date_split [0]
+    else:
+        
